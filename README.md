@@ -27,10 +27,6 @@ Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism
   - Bootstrap Icons
 - **Deployment**: Docker / Render / Heroku
 
-## 📸 Screenshots
-
-*(Add your screenshots here)*
-
 ## 🚀 Getting Started
 
 ### Prerequisites
