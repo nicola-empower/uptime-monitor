@@ -1,4 +1,4 @@
-# Empower Monitor 
+# Empower Monitor 💎
 
 A modern, high-performance **Uptime Monitoring Application** built with **Ruby on Rails 8**.
 Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism design system.
@@ -9,27 +9,29 @@ Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism
 
 ## ✨ Features
 
-- **Real-time Monitoring**: Automatically checks site status (HTTP 200/30x) upon saving.
-- **Glassmorphism UI**: Beautiful, dark-themed interface with frosted glass effects and vibrant gradients.
-- **Responsive Design**: Fully responsive layout optimized for desktop and mobile.
-- **Background Jobs**: (Future proof) Ready for asynchronous monitoring tasks.
-- **Production Ready**: Configured for deployment (Docker/Render) with PostgreSQL support.
+- **🛡️ Secure Authentication**: Built-in simple auth with `bcrypt` (No complex 3rd party deps).
+- **🔒 SSL & Security**: Tracks SSL certificate expiry and alerts if < 10 days remaining.
+- **⚡ Performance Tracking**: Measures and displays response time (ms) for every check.
+- **📝 Content Verification**: Optional "Expected Content" check to ensure your page isn't just 200 OK but actually loading correctly.
+- **📱 Mobile Optimized**: Fully responsive glassmorphism UI that looks great on Phones, Tablets, and Desktops.
+- **💎 Glass UI**: Beautiful, dark-themed interface with frosted glass effects and vibrant gradients.
+- **☁️ Production Ready**: Configured for Render/PostgreSQL with **Solid Output** (Solid Cache & Solid Queue).
 
 ## 🛠 Tech Stack
 
 - **Framework**: Ruby on Rails 8.1
 - **Language**: Ruby 3.4+
-- **Database**: SQLite3 (Dev) / PostgreSQL (Prod)
+- **Database**: 
+  - SQLite3 (Development)
+  - PostgreSQL (Production)
+- **Infrastructure**:
+  - **Solid Cache**: Database-backed caching.
+  - **Solid Queue**: Database-backed background jobs.
 - **Frontend**: 
-  - Standard Rails Views (ERB)
+  - Rails ERB Views
   - Custom Vanilla CSS (Glassmorphism System)
-  - Bootstrap 5 (Grid & Utilities)
+  - Bootstrap 5 (Responsive Utilities)
   - Bootstrap Icons
-- **Deployment**: Docker / Render / Heroku
-
-## 📸 Screenshots
-
-*(Add your screenshots here)*
 
 ## 🚀 Getting Started
 
@@ -37,7 +39,6 @@ Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism
 
 - Ruby 3.4+
 - Rails 8+
-- SQLite3
 
 ### Installation
 
@@ -54,20 +55,26 @@ Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism
 
 3.  **Setup Database**
     ```bash
-    rails db:create db:migrate
+    rails db:setup
     ```
+    *This will create the DB, migrate schema, and run seeds.*
 
 4.  **Run the Server**
     ```bash
     rails server
     ```
-    Visit `http://localhost:3000` in your browser.
+    Visit `http://localhost:3000`.
+
+### 🔐 Default Login (Development)
+The `db:seed` task creates a default admin user:
+- **Email**: `nicola@empower.co.uk`
+- **Password**: `password123`
 
 ## 🔮 Future Improvements
 
-- [ ] Background job scheduler (Sidekiq/SolidQueue) for periodic checking.
 - [ ] Email notifications for downtime.
-- [ ] Response time history charts.
+- [ ] Response time history charts using Chart.js.
+- [ ] Multi-region monitoring agents.
 
 ## 📄 License
 
