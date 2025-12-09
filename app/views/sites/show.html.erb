@@ -1,0 +1,65 @@
+<% content_for :title, "Site Details" %>
+
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <div class="d-flex align-items-center">
+        <%= link_to sites_path, class: "btn btn-outline-light btn-sm rounded-circle me-3", style: "width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);" do %>
+          <i class="bi bi-arrow-left"></i>
+        <% end %>
+        <h1 class="h2 fw-bold mb-0 text-white">Site Details</h1>
+      </div>
+      
+      <div class="btn-group shadow-sm" style="border-radius: 50px;">
+        <%= link_to edit_site_path(@site), class: "btn btn-outline-light btn-sm px-3", style: "backdrop-filter: blur(4px);" do %>
+          <i class="bi bi-pencil-square me-2"></i>Edit
+        <% end %>
+        <%= button_to @site, method: :delete, class: "btn btn-outline-danger btn-sm px-3", style: "border-left: none; backdrop-filter: blur(4px);", form: { style: "display: inline-block;" } do %>
+          <i class="bi bi-trash"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="glass-panel p-4 p-md-5 animate-slide-up position-relative overflow-hidden">
+      <!-- Glow effect behind the card content -->
+      <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: var(--color-empower-pink); filter: blur(80px); opacity: 0.3; border-radius: 50%;"></div>
+      
+      <div class="text-center mb-5">
+        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3 p-4 shadow-lg" style="width: 100px; height: 100px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+          <i class="bi bi-globe2 display-4"></i>
+        </div>
+        <h2 class="h4 fw-bold mb-1 text-white"><%= @site.url %></h2>
+        <p class="text-white-50"><i class="bi bi-clock-history me-1"></i> Last checked <%= time_ago_in_words(@site.updated_at) %> ago</p>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="p-3 rounded-3 border border-light border-opacity-10" style="background: rgba(0,0,0,0.2);">
+            <label class="d-block text-uppercase small fw-bold opacity-50 mb-1">Current Status</label>
+            <% is_up = @site.status.to_s.include?("Up") %>
+            <div class="d-flex align-items-center gap-2">
+               <i class="bi <%= is_up ? 'bi-check-circle-fill text-success' : 'bi-exclamation-triangle-fill text-danger' %> fs-4"></i>
+               <span class="fs-5 fw-bold" style="color: <%= is_up ? '#00ff96' : '#ff5f6d' %>"><%= @site.status %></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Placeholder for future stats -->
+        <div class="col-6">
+           <div class="p-3 rounded-3 border border-light border-opacity-10 h-100" style="background: rgba(255,255,255,0.03);">
+             <label class="d-block text-uppercase small fw-bold opacity-50 mb-1">Uptime</label>
+             <span class="fs-5 fw-bold">100%</span>
+           </div>
+        </div>
+        <div class="col-6">
+           <div class="p-3 rounded-3 border border-light border-opacity-10 h-100" style="background: rgba(255,255,255,0.03);">
+             <label class="d-block text-uppercase small fw-bold opacity-50 mb-1">Response</label>
+             <span class="fs-5 fw-bold">~200ms</span>
+           </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

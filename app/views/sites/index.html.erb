@@ -1,0 +1,83 @@
+<div class="d-flex justify-content-between align-items-center mb-5">
+  <h1 class="fw-bold text-white" style="text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 800;">Your Monitored Sites</h1>
+  <%= link_to new_site_path, class: "btn btn-primary px-4 py-2 rounded-pill fw-bold" do %>
+    <i class="bi bi-plus-lg me-2"></i>Add New Site
+  <% end %>
+</div>
+
+<div class="glass-panel p-4 p-md-5">
+  <table class="table table-hover align-middle text-white mb-0" style="--bs-table-bg: transparent; --bs-table-hover-bg: rgba(255,255,255,0.05); color: white;">
+    <thead>
+      <tr style="border-bottom: 2px solid rgba(255,255,255,0.1);">
+        <th class="py-3 text-uppercase small opacity-75 fw-bold" style="letter-spacing: 1.5px;">URL</th>
+        <th class="py-3 text-uppercase small opacity-75 fw-bold" style="letter-spacing: 1.5px;">Status</th>
+        <th class="py-3 text-uppercase small opacity-75 fw-bold" style="letter-spacing: 1.5px;">Last Checked</th>
+        <th class="text-end py-3 text-uppercase small opacity-75 fw-bold" style="letter-spacing: 1.5px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="border-0">
+      <% @sites.each do |site| %>
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;">
+          <td class="fw-bold py-4">
+            <a href="<%= site.url %>" target="_blank" class="text-white text-decoration-none d-flex align-items-center gap-3 hover-glow">
+              <span class="p-2 rounded-circle d-inline-flex align-items-center justify-content-center" style="background: rgba(255,255,255,0.1); width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.1);">
+                <i class="bi bi-globe2"></i>
+              </span>
+              <span style="font-size: 1.1rem;"><%= site.url %></span>
+            </a>
+          </td>
+          
+          <td>
+            <% is_up = site.status.to_s.include?("Up") %>
+            <% badge_bg = is_up ? "rgba(0, 255, 150, 0.2)" : "rgba(255, 95, 109, 0.2)" %>
+            <% badge_color = is_up ? "#00ff96" : "#ff5f6d" %>
+            <% badge_border = is_up ? "rgba(0, 255, 150, 0.4)" : "rgba(255, 95, 109, 0.4)" %>
+            
+            <div class="d-flex flex-column align-items-start">
+              <span class="badge rounded-pill px-3 py-2 border shadow-sm d-inline-flex align-items-center gap-2" 
+                    style="background: <%= badge_bg %>; color: <%= badge_color %>; border-color: <%= badge_border %> !important; backdrop-filter: blur(5px);">
+                <i class="bi <%= is_up ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill' %>"></i>
+                <%= is_up ? "Operational" : "Issue Detected" %>
+              </span>
+              <% if !is_up %>
+                <span class="small mt-1 text-danger-emphasis ps-2"><%= site.status %></span>
+              <% end %>
+            </div>
+          </td>
+
+          <td class="opacity-75">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-clock-history"></i>
+              <% if site.updated_at %>
+                <%= site.updated_at > 24.hours.ago ? time_ago_in_words(site.updated_at) + " ago" : site.updated_at.strftime("%b %d, %Y") %>
+              <% else %>
+                Never
+              <% end %>
+            </div>
+          </td>
+
+          <td class="text-end">
+            <div class="btn-group shadow-sm" style="border-radius: 50px;">
+              <%= link_to edit_site_path(site), class: "btn btn-sm btn-outline-light px-3 py-2", style: "border-color: rgba(255,255,255,0.2); backdrop-filter: blur(4px);", title: "Edit or Refresh" do %>
+                <i class="bi bi-arrow-clockwise"></i>
+              <% end %>
+              <%= link_to site, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-danger px-3 py-2", style: "background: rgba(220, 53, 69, 0.1); border-left: none; backdrop-filter: blur(4px);", title: "Delete Site" do %>
+                <i class="bi bi-trash"></i>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <% if @sites.empty? %>
+    <div class="text-center py-5">
+      <div class="mb-3 opacity-50">
+        <i class="bi bi-hdd-network" style="font-size: 3rem;"></i>
+      </div>
+      <h3 class="h4 opacity-75">No sites monitored yet</h3>
+      <p class="text-white-50">Add your first site to start tracking uptime.</p>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,16 @@
+<% content_for :title, "New Site" %>
+
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="d-flex align-items-center mb-4">
+      <%= link_to sites_path, class: "btn btn-outline-light btn-sm rounded-circle me-3", style: "width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);" do %>
+        <i class="bi bi-arrow-left"></i>
+      <% end %>
+      <h1 class="h2 fw-bold mb-0 text-white" style="text-shadow: 0 2px 10px rgba(0,0,0,0.2);">New Site</h1>
+    </div>
+
+    <div class="glass-panel p-4 p-md-5 animate-slide-up">
+      <%= render "form", site: @site %>
+    </div>
+  </div>
+</div>

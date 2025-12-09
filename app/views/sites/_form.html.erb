@@ -1,0 +1,37 @@
+<%= form_with(model: site) do |form| %>
+  <% if site.errors.any? %>
+    <div class="alert alert-danger border-0 shadow-sm mb-4" style="background: rgba(220, 53, 69, 0.1); backdrop-filter: blur(5px); color: #ff6b6b;">
+      <h4 class="h6 fw-bold mb-2"><i class="bi bi-exclamation-octagon-fill me-2"></i><%= pluralize(site.errors.count, "error") %> prohibited this site from being saved:</h4>
+      <ul class="mb-0 small">
+        <% site.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= form.label :url, class: "form-label text-uppercase small fw-bold opacity-75", style: "letter-spacing: 1px;" %>
+    <div class="input-group">
+      <span class="input-group-text border-0 text-white" style="background: rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1);"><i class="bi bi-link-45deg"></i></span>
+      <%= form.text_field :url, class: "form-control border-0 text-white", placeholder: "https://example.com", style: "background: rgba(255,255,255,0.1); color: white; box-shadow: none;", autocomplete: "off" %>
+    </div>
+    <div class="form-text text-white-50">Enter the full URL including https://</div>
+  </div>
+
+  <div class="mb-5">
+    <%= form.label :status, class: "form-label text-uppercase small fw-bold opacity-75", style: "letter-spacing: 1px;" %>
+    <%= form.text_field :status, class: "form-control border-0 text-white opacity-50", value: "Pending (Auto-checked on save)", readonly: true, style: "background: rgba(255,255,255,0.05); cursor: not-allowed;" %>
+  </div>
+
+  <div class="d-grid">
+    <%= form.button class: "btn btn-primary btn-lg rounded-pill fw-bold shadow-lg" do %>
+      <i class="bi bi-check2-circle me-2"></i> Save Site
+    <% end %>
+  </div>
+  
+  <style>
+    .form-control::placeholder { color: rgba(255,255,255,0.3); }
+    .form-control:focus { background: rgba(255,255,255,0.15) !important; color: white !important; box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.3) !important; }
+  </style>
+<% end %>
