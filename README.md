@@ -3,6 +3,8 @@
 A modern, high-performance **Uptime Monitoring Application** built with **Ruby on Rails 8**.
 Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism design system.
 
+<img width="2877" height="1509" alt="image" src="https://github.com/user-attachments/assets/af2d5508-3fcc-4bc9-a691-8eee9afdce00" />
+
 ---
 
 ## ✨ Features
