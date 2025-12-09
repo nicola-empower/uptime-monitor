@@ -11,7 +11,7 @@
     <thead>
       <tr style="border-bottom: 2px solid rgba(255,255,255,0.1);">
         <th class="py-3 text-uppercase small opacity-75 fw-bold" style="letter-spacing: 1.5px;">URL</th>
-        <th class="py-3 text-uppercase small opacity-75 fw-bold" style="letter-spacing: 1.5px;">Status</th>
+        <th class="py-3 text-uppercase small opacity-75 fw-bold" style="letter-spacing: 1.5px;">Status & Health</th>
         <th class="py-3 text-uppercase small opacity-75 fw-bold" style="letter-spacing: 1.5px;">Last Checked</th>
         <th class="text-end py-3 text-uppercase small opacity-75 fw-bold" style="letter-spacing: 1.5px;">Actions</th>
       </tr>
@@ -34,15 +34,31 @@
             <% badge_color = is_up ? "#00ff96" : "#ff5f6d" %>
             <% badge_border = is_up ? "rgba(0, 255, 150, 0.4)" : "rgba(255, 95, 109, 0.4)" %>
             
-            <div class="d-flex flex-column align-items-start">
+            <div class="d-flex flex-column align-items-start gap-2">
               <span class="badge rounded-pill px-3 py-2 border shadow-sm d-inline-flex align-items-center gap-2" 
                     style="background: <%= badge_bg %>; color: <%= badge_color %>; border-color: <%= badge_border %> !important; backdrop-filter: blur(5px);">
                 <i class="bi <%= is_up ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill' %>"></i>
                 <%= is_up ? "Operational" : "Issue Detected" %>
               </span>
+
               <% if !is_up %>
-                <span class="small mt-1 text-danger-emphasis ps-2"><%= site.status %></span>
+                <span class="small text-danger-emphasis ps-2"><%= site.status %></span>
               <% end %>
+
+              <div class="d-flex gap-2 ps-1">
+                <% if site.respond_to?(:response_time) && site.response_time %>
+                  <span class="badge border border-light border-opacity-10 fw-normal text-white-50" style="background: rgba(255,255,255,0.05);">
+                    <i class="bi bi-lightning-charge-fill text-warning me-1"></i><%= site.response_time %>ms
+                  </span>
+                <% end %>
+
+                <% if site.respond_to?(:ssl_expires_at) && site.ssl_expires_at %>
+                   <span class="badge border border-light border-opacity-10 fw-normal text-white-50" style="background: rgba(255,255,255,0.05);" title="SSL Expires: <%= site.ssl_expires_at.strftime('%d %b %Y') %>">
+                    <i class="bi bi-shield-lock-fill text-info me-1"></i> SSL
+                  </span>
+                <% end %>
+              </div>
+
             </div>
           </td>
 

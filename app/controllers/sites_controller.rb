@@ -65,6 +65,6 @@ class SitesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def site_params
-      params.expect(site: [ :url, :status ])
+      params.expect(site: [ :url, :status, :expected_content ])
     end
 end

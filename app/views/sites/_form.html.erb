@@ -24,6 +24,15 @@
     <%= form.text_field :status, class: "form-control border-0 text-white opacity-50", value: "Pending (Auto-checked on save)", readonly: true, style: "background: rgba(255,255,255,0.05); cursor: not-allowed;" %>
   </div>
 
+  <div class="mb-4">
+    <%= form.label :expected_content, "Expected Content (Optional)", class: "form-label text-uppercase small fw-bold opacity-75", style: "letter-spacing: 1px;" %>
+    <div class="input-group">
+      <span class="input-group-text border-0 text-white" style="background: rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1);"><i class="bi bi-file-text"></i></span>
+      <%= form.text_field :expected_content, class: "form-control border-0 text-white", placeholder: "e.g., 'Welcome to our site'", style: "background: rgba(255,255,255,0.1); color: white; box-shadow: none;" %>
+    </div>
+    <div class="form-text text-white-50">If set, we'll mark the site as "Issue" if this text is missing.</div>
+  </div>
+
   <div class="d-grid">
     <%= form.button class: "btn btn-primary btn-lg rounded-pill fw-bold shadow-lg" do %>
       <i class="bi bi-check2-circle me-2"></i> Save Site
