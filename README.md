@@ -32,10 +32,8 @@ Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism
   - Custom Vanilla CSS (Glassmorphism System)
   - Bootstrap 5 (Responsive Utilities)
   - Bootstrap Icons
-<<<<<<< HEAD
-=======
 - **Deployment**: Docker / Render / Heroku
->>>>>>> 3c111a01d865ff1b1355d8d302da640e16be381e
+
 
 ## 🚀 Getting Started
 
@@ -69,14 +67,9 @@ Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism
     ```
     Visit `http://localhost:3000`.
 
-### 🔐 Default Login (Development)
-The `db:seed` task creates a default admin user:
-- **Email**: `nicola@empower.co.uk`
-- **Password**: `password123`
 
 ## 🔮 Future Improvements
 
-- [ ] Email notifications for downtime.
 - [ ] Response time history charts using Chart.js.
 - [ ] Multi-region monitoring agents.
 
