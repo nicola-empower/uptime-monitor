@@ -1,8 +1,12 @@
-<div class="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-3">
   <h1 class="fw-bold text-white mb-0" style="text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 800;">Your Monitored Sites</h1>
-  <%= link_to new_site_path, class: "btn btn-primary px-4 py-2 rounded-pill fw-bold" do %>
-    <i class="bi bi-plus-lg me-2"></i>Add New Site
-  <% end %>
+  <div class="d-flex gap-2">
+    <%= button_to start_monitoring_sites_path, method: :post, class: "btn btn-outline-info px-4 py-2 rounded-pill fw-bold", form: {style: "display:inline-block;"} do %>
+      <i class="bi bi-robot me-2"></i>Auto-Monitor
+    <% end %>
+    <%= link_to new_site_path, class: "btn btn-primary px-4 py-2 rounded-pill fw-bold" do %>
+      <i class="bi bi-plus-lg me-2"></i>Add New Site
+    <% end %>
+  </div>
 </div>
 
 <div class="glass-panel p-3 p-md-5">

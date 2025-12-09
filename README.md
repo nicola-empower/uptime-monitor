@@ -13,9 +13,10 @@ Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism
 - **🔒 SSL & Security**: Tracks SSL certificate expiry and alerts if < 10 days remaining.
 - **⚡ Performance Tracking**: Measures and displays response time (ms) for every check.
 - **📝 Content Verification**: Optional "Expected Content" check to ensure your page isn't just 200 OK but actually loading correctly.
-- **📱 Mobile Optimized**: Fully responsive glassmorphism UI that looks great on Phones, Tablets, and Desktops.
+- **📱 Mobile Optimised**: Fully responsive glassmorphism UI that looks great on Phones, Tablets, and Desktops.
 - **💎 Glass UI**: Beautiful, dark-themed interface with frosted glass effects and vibrant gradients.
 - **☁️ Production Ready**: Configured for Render/PostgreSQL with **Solid Output** (Solid Cache & Solid Queue).
+- **✉️ Notifications**: Optional email notifications for downtime.  
 
 ## 🛠 Tech Stack
 
@@ -32,10 +33,8 @@ Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism
   - Custom Vanilla CSS (Glassmorphism System)
   - Bootstrap 5 (Responsive Utilities)
   - Bootstrap Icons
-<<<<<<< HEAD
-=======
 - **Deployment**: Docker / Render / Heroku
->>>>>>> 3c111a01d865ff1b1355d8d302da640e16be381e
+
 
 ## 🚀 Getting Started
 
@@ -69,14 +68,9 @@ Designed to be lightweight, fast, and aesthetically premium with a Glassmorphism
     ```
     Visit `http://localhost:3000`.
 
-### 🔐 Default Login (Development)
-The `db:seed` task creates a default admin user:
-- **Email**: `nicola@empower.co.uk`
-- **Password**: `password123`
 
 ## 🔮 Future Improvements
 
-- [ ] Email notifications for downtime.
 - [ ] Response time history charts using Chart.js.
 - [ ] Multi-region monitoring agents.
 
